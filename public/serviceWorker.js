@@ -1,8 +1,14 @@
 const CACHE_NAME = 'version-1';
-const urlsToCache = ['index.html', 'offline.html'];
+const urlsToCache = [
+	'/',
+	'/components',
+	'/context',
+	'index.html',
+	'offline.html',
+];
 const self = this;
 self.addEventListener('install', (event) => {
-	event.waitUntill(
+	event.waitUntil(
 		caches.open(CACHE_NAME).then((cache) => {
 			console.log('opening cache');
 			return cache.addAll(urlsToCache);
@@ -10,16 +16,23 @@ self.addEventListener('install', (event) => {
 	);
 });
 self.addEventListener('fetch', (event) => {
+	// event.respondWith(
+	// 	caches.match(event.request).then(() => {
+	// 		return fetch(event.request).catch(() => caches.match('offline.html'));
+	// 	}),
 	event.respondWith(
-		caches.match(event.request).then(() => {
-			return fetch(event.request).catch(() => caches.match('online.html'));
+		caches.match(event.request).then((response) => {
+			if (response) {
+				return response;
+			}
+			return fetch(event.request);
 		}),
 	);
 });
 self.addEventListener('activate', (event) => {
 	const cacheWhiteList = [];
 	cacheWhiteList.push(CACHE_NAME);
-	event.waitUntill(
+	event.waitUntil(
 		caches.keys().then((cacheNames) =>
 			Promise.all(
 				cacheNames.map((cacheName) => {

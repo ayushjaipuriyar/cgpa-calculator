@@ -20,10 +20,8 @@ function Total() {
 		while (i < context.year * 2) {
 			sum += context.gpas[i] * context.credits[i];
 			i++;
-			console.log('i', i, 'SUM', sum, 'GPA', context.gpas[i - 1]);
 		}
 		sum = parseFloat(sum / calculateCredits()).toFixed(2);
-		console.log(sum);
 		return sum;
 	};
 	const [totalCredits, setTotalCredits] = useState(calculateCredits);

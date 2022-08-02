@@ -21,7 +21,6 @@ function SubCard(props) {
 		setIsDisabled(!isDisabled);
 	};
 	const handleInputChange = (e) => {
-		console.log(e.target.value);
 		if (e.target.name === 'gpa') {
 			setGpaValue(e.target.value);
 			context.gpas[semester - 1] = e.target.value;
