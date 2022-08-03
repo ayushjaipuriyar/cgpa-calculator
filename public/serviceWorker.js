@@ -1,8 +1,8 @@
 const CACHE_NAME = 'version-1';
 const urlsToCache = [
 	'/',
-	'/components',
-	'/context',
+	// '/components',
+	// '/context',
 	'index.html',
 	'offline.html',
 ];
