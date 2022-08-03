@@ -33,7 +33,7 @@
 <h3 align="center">CGPA Calculator</h3>
 
   <p align="center">
-    project_description
+  I have created a web app in ReactJS to calculate my CGPA , instead of remembering the 
     <br />
     <a href="https://github.com/ayushjaipuriyar/cgpa-calculator"><strong>Explore the docs »</strong></a>
     <br />
